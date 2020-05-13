@@ -1,4 +1,3 @@
-#
 library(shiny)
 
 # Define UI for data upload app ----
@@ -33,13 +32,6 @@ ui <- fluidPage(
                                      Tab = "\t"),
                          selected = ","),
             
-            # Input: Select quotes ----
-            radioButtons("quote", "Quote",
-                         choices = c(None = "",
-                                     "Double Quote" = '"',
-                                     "Single Quote" = "'"),
-                         selected = '"'),
-            
             # Horizontal line ----
             tags$hr(),
             
@@ -62,28 +54,27 @@ ui <- fluidPage(
     )
 )
 
-# Define server logic to read selected file ----
+# Définition du serveur afin de pouvoir lire le fichier ----
 server <- function(input, output) {
     
     output$contents <- renderTable({
         
-        # input$file1 will be NULL initially. After the user selects
-        # and uploads a file, head of that data file by default,
-        # or all rows if selected, will be shown.
+        # input$file1 sera nul au lancement. Après la sélection de l'utilisateur
+        # et l'importation du fichier, le haut du tableau sera affiché par défaut,
+        # ou toutes les lignes si l'option correspondante a préalablement été seléctionnée.
         
         req(input$file1)
         
-        # when reading semicolon separated files,
-        # having a comma separator causes `read.csv` to error
+        # quand on lit des fichiers séparés par des points-virgules,
+        # avoir une virgule comme séparateur cause une erreur à "read.csv"
         tryCatch(
             {
                 df <- read.csv(input$file1$datapath,
                                header = input$header,
-                               sep = input$sep,
-                               quote = input$quote)
+                               sep = input$sep)
             },
             error = function(e) {
-                # return a safeError if a parsing error occurs
+                # Retourne une safeError si une erreur d'analyse apparaît
                 stop(safeError(e))
             }
         )
@@ -99,5 +90,5 @@ server <- function(input, output) {
     
 }
 
-# Create Shiny app ----
+# Crée l'application Shiny ----
 shinyApp(ui, server)
