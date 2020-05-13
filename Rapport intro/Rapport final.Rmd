@@ -25,21 +25,22 @@ library(factoextra)
 library(tibble)
 ```
 
+
 # Définition du projet
 
 Afin d’appliquer les connaissances acquises lors du module OPEN 2020, nous allons créer une application Shiny à l’aide de R et Rstudio.
 
+Cette application réalisera une analyse statistique d’un jeu de données. 
 
-Cette application réalisera une analyse statistique de type ANOVA.
-
-Le jeu de données, communiqué par Dylan, comprend des variétés de blés et leurs rendements. Le but est de séparer les variétés en groupe de population en fonction de leur rendement.
-
+Le jeu de données, communiqué par Dylan, correspondant à un essai agronomique dans l’Aude de 2019, et comprend des variétés de petit épeautre et leurs rendements.
 
 Voici ci-dessous un aperçu de ces données :
 
-```{r tableau, echo=FALSE, out.width = '30%', fig.align = "center",fig.cap="Tableau de données utilisé"}
+```{r tableau, echo=FALSE, out.width = '30%', fig.align = "center",fig.cap="Apercu du tableau de données utilisé"}
 knitr::include_graphics("tableau.png")
 ```
+
+Notre application réalisera une ANOVA qui sert à vérifier que le facteur (variété) a une influence sur le résultat (rendement). Ensuite, elle réalisera un test de Tukey pour comparer et classer les résultats dans différents groupes de valeur proche. Grace à cette application, nous pourrons connaitre les variétés donnant un meilleur rendement sur un interface ludique.
 
 
 # Répartition des rôles
