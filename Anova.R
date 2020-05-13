@@ -1,0 +1,1 @@
+data <- read.table("activableR19.csv", header = TRUE, sep = ",")
