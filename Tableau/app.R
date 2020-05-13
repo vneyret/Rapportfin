@@ -1,52 +1,54 @@
 library(shiny)
 
-# Define UI for data upload app ----
+# D√©finition de l'UI pour importer des donn√©es
 ui <- fluidPage(
     
-    # App title ----
-    titlePanel("Uploading Files"),
+    # Titre
+    titlePanel("Importez votre tableau"),
     
-    # Sidebar layout with input and output definitions ----
+    # Mise en page : disposition de la barre lat√©rale
     sidebarLayout(
         
-        # Sidebar panel for inputs ----
+        # Panneau pour afficher les entr√©es
         sidebarPanel(
             
-            # Input: Select a file ----
-            fileInput("file1", "Choose CSV File",
+            # Imput pour s√©lectionner un fichier
+            fileInput("file1", "Choisissez un fichier .CSV",
                       multiple = FALSE,
                       accept = c("text/csv",
                                  "text/comma-separated-values,text/plain",
                                  ".csv")),
             
-            # Horizontal line ----
+            # Insertion d'une ligne horizontale
             tags$hr(),
             
-            # Input: Checkbox if file has header ----
-            checkboxInput("header", "Header", TRUE),
+            # Input pour ins√©rer un bouton pour voir si le fichier a des en-t√™te
+            checkboxInput("header", "En-t√™te", TRUE),
             
-            # Input: Select separator ----
-            radioButtons("sep", "Separator",
+            
+            # Input pour choisir le type de s√©parateur
+            radioButtons("sep", "S√©parateurs",
                          choices = c(Comma = ",",
                                      Semicolon = ";",
                                      Tab = "\t"),
                          selected = ","),
             
-            # Horizontal line ----
+            
+            # Insertion d'une ligne horizontale
             tags$hr(),
             
-            # Input: Select number of rows to display ----
-            radioButtons("disp", "Display",
-                         choices = c(Head = "head",
-                                     All = "all"),
-                         selected = "head")
+            # Input pour choisir le nombre de lignes √† afficher
+            radioButtons("disp", "Affichage",
+                         choices = c(Head = "En-t√™te",
+                                     All = "Tableau en entier"),
+                         selected = "En-t√™te")
             
         ),
         
-        # Main panel for displaying outputs ----
+        # Panneau pour afficher les sorties
         mainPanel(
             
-            # Output: Data file ----
+            # Affichage du tableau
             tableOutput("contents")
             
         )
@@ -54,19 +56,19 @@ ui <- fluidPage(
     )
 )
 
-# DÈfinition du serveur afin de pouvoir lire le fichier ----
+# D√©finition du serveur afin de pouvoir lire le fichier ----
 server <- function(input, output) {
     
     output$contents <- renderTable({
         
-        # input$file1 sera nul au lancement. AprËs la sÈlection de l'utilisateur
-        # et l'importation du fichier, le haut du tableau sera affichÈ par dÈfaut,
-        # ou toutes les lignes si l'option correspondante a prÈalablement ÈtÈ selÈctionnÈe.
+        # input file1 sera nul au lancement. Apr√©s la s√©lection de l'utilisateur
+        # et l'importation du fichier, le haut du tableau sera affich√© par d√©faut,
+        # ou toutes les lignes si l'option correspondante a pr√©alablement √©t√© selectionn√©e.
         
         req(input$file1)
         
-        # quand on lit des fichiers sÈparÈs par des points-virgules,
-        # avoir une virgule comme sÈparateur cause une erreur ‡ "read.csv"
+        # quand on lit des fichiers s√©par√©s par des points-virgules,
+        # avoir une virgule comme s√©parateur cause une erreur ? "read.csv"
         tryCatch(
             {
                 df <- read.csv(input$file1$datapath,
@@ -74,7 +76,7 @@ server <- function(input, output) {
                                sep = input$sep)
             },
             error = function(e) {
-                # Retourne une safeError si une erreur d'analyse apparaÓt
+                # Retourne une safeError si une erreur d'analyse appara√Æt
                 stop(safeError(e))
             }
         )
@@ -90,5 +92,5 @@ server <- function(input, output) {
     
 }
 
-# CrÈe l'application Shiny ----
+# Cr√©√© l'application Shiny ----
 shinyApp(ui, server)
