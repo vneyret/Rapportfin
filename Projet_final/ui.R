@@ -1,7 +1,7 @@
 library(shiny)
 library(shinythemes)
 
-ui <- fluidPage(
+ui <- tagList(
   fluidPage(theme = shinytheme("sandstone")),
   navbarPage(
    # title=div(img(src="logo.png"), "ISARA Projet Shiny G1"),
@@ -74,6 +74,21 @@ ui <- fluidPage(
     ),
              
       
-   tabPanel("Interprétation")
+   tabPanel("Interprétation",
+            mainPanel(
+               tabsetPanel(
+                  tabPanel("Description",
+                           h4("Table"),
+                           verbatimTextOutput("summary")
+                           
+                  ),
+                  tabPanel("Hypothèses", "This panel is intentionally left blank"),
+                  tabPanel("Anova", "This panel is intentionally left blank"),
+                  tabPanel("Résultats", "Ci dessous :")
+               )
+            ) 
+            
+            )
+      
   )
 )
