@@ -2,7 +2,7 @@ library(shiny)
 library(shinythemes)
 
 ui <- tagList(
-  fluidPage(theme = shinytheme("sandstone")),
+  fluidPage(theme = shinytheme("flatly")),
   navbarPage(
    # title=div(img(src="logo.png"), "ISARA Projet Shiny G1"),
    "ISARA Projet Shiny G1",
@@ -95,8 +95,11 @@ ui <- tagList(
             mainPanel(
                tabsetPanel(
                   tabPanel("Description",
-                           h4("Moyenne et barplot"),
+                           br(),
+                           h5(p("Nous affichons la",strong ("moyenne"), "pour les différentes modalités du facteur:", style="text-align:justify;color:black;background-color:#e0ffff;padding:15px;border-radius:8px")),
+                           br(),
                            tableOutput("mean"),
+                           h5(p("Nous affichons le",strong ("boxplot"), "pour les différentes modalités du facteur. Le boxplot permet de visualiser des mesures statistiques clés telles que la médiane, la moyenne et les quartiles.", style="text-align:justify;color:black;background-color:#e0ffff;padding:15px;border-radius:8px")),
                            plotOutput("boxplot"),
                            tableOutput("anov"),
                            plotOutput("tuck"),
