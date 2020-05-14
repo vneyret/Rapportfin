@@ -55,7 +55,7 @@ Elle est utilisable pour les données sélectionnées comme exemple, mais aussi 
 
 Notre groupe est composé de Anne Pinatel, Anne-Laure Girard, Dylan Clair, Eloise Galmiche, Eugénie Romette, Margot Challand, Salomé Hamard, Thomas Barrande, Valentine Neyret.
 
-* Anne-Laure et Thomas se chargent d’importer les données sous R et aident à la mise en forme sous shiny.
+* Anne-Laure et Thomas se chargent d’importer les données sous R.
 
 * Margot, Salomé et Dylan réalisent le codage de l’analyse statistique.
 
@@ -64,7 +64,15 @@ Notre groupe est composé de Anne Pinatel, Anne-Laure Girard, Dylan Clair, Elois
 * Eloise et Valentine réalisent le rapport explicatif du projet et ses étapes. Ce rapport grâce à Word et sera suivi d’un rapport Rmarkdown plus complet.
 
 
-# Description du code
+# Description de l'application
+
+L'application est formée de trois onglets: 
+
+* Informations: L'onglet information est ce que l'on pourrait assimiler à une page de garde. Ainsi, on y trouve les hypothèses de base, l'explication des données et leur provenance. 
+
+* Charger tableau: Dans cet onglet, on sélectionne le tableau de données à importer, qui s'affiche une fois chargé.
+
+* Interprétation: L'onglet Interprétation est lui même formé de quatre onglets: Description, Hypothèses, Anova, Résultats.
 
 
 # Conclusion du module
