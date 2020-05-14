@@ -9,11 +9,28 @@ ui <- tagList(
     
    #Onglet Informations
       tabPanel("Informations",
-            
-             p("Bonjour, cette application utilise un jeu de données provenant d'essais agronomiques
+               fluidRow(column(width=2),
+                        column(
+                           h3(p("ANOVA à 1 un facteur",style="color:black;text-align:center")),
+                           width=8,style="background-color:#e0eee0;border-radius: 8px")
+               ),
+               
+            br(),
+            fluidRow(column(width=2, icon("arrow-alt-circle-right","fa-5x"),align="center"),
+                  column(
+                        p("Cette application a pour but de réaliser une ANOVA à 1 facteur sur tous types de données numérique. Un ANOVA est un test statistique qui permet de tester des données 
+                        paramétriques en comparant la moyenne entre plusieurs modalités d'un facteur. Deux hypothèses de travail sont alors testées :",style="color:black;text-align:justify"),
+                         withMathJax(),
+                        p(strong("H0 : Les moyennes sont toutes égales entre elles. Le facteur n’a pas un effet significatif sur la variable"),style="color:black; text-align:justify; padding:20px;border:1px solid black;background-color:white"),
+                        p(strong("H1 : Au moins une des moyennes est différente des autres. Le facteur a un effet significatif sur la variable"),style="color:black; text-align:justify; padding:20px;border:1px solid black;background-color:white"),
+                        width=8,style="background-color:#e0eee0 ;border-radius: 8px")
+             ),
+             
+             br(),
+             p("A titre d'exemple, nous utilisons un jeu de données provenant d'essais agronomiques
              réalisés sur du petit épeautre. Les essais se sont déroulés sur ", strong("l'année 2019"), "et ont eu lieu sur
              ", strong("9 variétés différentes."), "L'expérimentation s'est déroulée dans le département de l'Aude, une partie dans la Piège, une
-             partie dans le Minervois et une troisième partie à l'école d'ingénieur de Purpan.", style="text-align:justify;color:black;background-color:#f0fff0;padding:15px;border-radius:10px"),
+             partie dans le Minervois et une troisième partie à l'école d'ingénieur de Purpan.", style="text-align:justify;color:black;background-color:#e0eee0;padding:15px;border-radius:8px"),
              br(),
              
                fluidPage(
