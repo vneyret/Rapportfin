@@ -95,9 +95,10 @@ ui <- tagList(
             mainPanel(
                tabsetPanel(
                   tabPanel("Description",
-                           h4("Table"),
-                           verbatimTextOutput("summary")
-                           
+                           h4("Moyenne et barplot"),
+                           tableOutput("mean"),
+                           plotOutput("boxplot")
+                          
                   ),
                   tabPanel("Hypothèses", "This panel is intentionally left blank"),
                   tabPanel("Anova", "This panel is intentionally left blank"),
