@@ -36,7 +36,7 @@ server <- function(input, output) {
   rdt <- donnes$rendement #a faire un lien avec le tableau importé ou un text input "nom de votre colonne variable"
   fac <- as.factor(donnes$variete) #a faire un lien avec le tableau importé ou un text input "nom de votre colonne facteur"
   moyennes <- tapply(rdt,fac,mean) # afficher = ok
-  output$mean <- renderTable({tapply(rdt,fac,mean)}, rownames = TRUE)
+  output$mean <- renderTable({tapply(rdt,fac,mean)}, rownames = TRUE, colnames = FALSE)
   
   variances <- tapply(rdt,fac,var)
   plot <- boxplot(rdt~fac, xlab="Varietes", ylab="rendement en qx/ha") # afficher = ok
@@ -46,4 +46,43 @@ server <- function(input, output) {
   lm1 <- lm(rdt~fac)
   par(mfrow=c(2,2))
   plotsindep <- plot(lm1) ## (Demande à l'utilisateur + Affiche) Ok si  :
+  
+  #- Residual, Scale-Location et Constante Leverage : points éparpillés,
+  #- Normal Q_Q : points sur la ligne, 
+  
+  #Normalité
+  shapiro.test(lm1$residuals) ## (Affiche) Ok si P-Value > 0,05.
+  
+  #homoscédasticité
+  bartlett.test(rdt~fac) ## (Affiche) OK si P-Value > 0,05.
+  
+  
+  
+  #Si les 3 conditions d'hypothèse ne sont pas validées, on ne peut pas faire d'ANOVA, demander si il veut quand même la faire.
+  
+  
+  
+  ### Table d'ANOVA
+  
+  anova(lm(rdt~fac))
+  output$anov <- renderText({lm(rdt~fac)})
+  ## Afficher 
+  
+  # Si P-Value > 0,05, alors on conserve l'hypothèse H0, on n'a pas pu mettre en évidence l'effet du facteur testé.
+  # Si P-Value < 0,05 alors on rejete H0, on a pu mettre en évidence un effet du facteur testé.
+  
+  # Si P-Value <0,05, alors on fait le teste de Tuckey, si non demander si veut le faire quand même.
+  TukeyHSD(aov(rdt~fac))
+  output$tuck <- renderTable(aov(rdt~fac))
+  plot(TukeyHSD(aov(rdt~fac)))
+  
+  model<-aov(rendement~variete,data = donnes)
+  out <- SNK.test(model,"variete", console=TRUE, 
+                  main="patata")
+  print(SNK.test(model,"variete", group=FALSE))
+  
+  ## Sort le tableau avec les variétés et les lettres de groupe en face
+  
+  output$classes <- renderTable({SNK.test(model,"variete", group=FALSE)})
+  
 }
