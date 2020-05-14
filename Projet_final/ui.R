@@ -97,7 +97,10 @@ ui <- tagList(
                   tabPanel("Description",
                            h4("Moyenne et barplot"),
                            tableOutput("mean"),
-                           plotOutput("boxplot")
+                           plotOutput("boxplot"),
+                           tableOutput("anov"),
+                           plotOutput("tuck"),
+                           tableOutput("classes")
                           
                   ),
                   tabPanel("Hypothèses", "This panel is intentionally left blank"),
