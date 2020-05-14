@@ -36,7 +36,7 @@ server <- function(input, output) {
   rdt <- donnes$rendement #a faire un lien avec le tableau importé ou un text input "nom de votre colonne variable"
   fac <- as.factor(donnes$variete) #a faire un lien avec le tableau importé ou un text input "nom de votre colonne facteur"
   moyennes <- tapply(rdt,fac,mean) # afficher = ok
-  output$mean <- renderTable({tapply(rdt,fac,mean)}, rownames = TRUE)
+  output$mean <- renderTable({tapply(rdt,fac,mean)}, rownames = TRUE, colnames = FALSE)
   
   variances <- tapply(rdt,fac,var)
   plot <- boxplot(rdt~fac, xlab="Varietes", ylab="rendement en qx/ha") # afficher = ok
