@@ -1,4 +1,5 @@
 library(shiny)
+library("agricolae")
 
 server <- function(input, output) {
   
@@ -25,5 +26,24 @@ server <- function(input, output) {
     )
     
   })
+  donnes <- read.table("activableR19.csv", header = TRUE, sep = ",")
+  #donnes <- df
+  dim(donnes)
+  names(donnes)
+  table(donnes$variete)
   
+  ### Variables
+  rdt <- donnes$rendement #a faire un lien avec le tableau importé ou un text input "nom de votre colonne variable"
+  fac <- as.factor(donnes$variete) #a faire un lien avec le tableau importé ou un text input "nom de votre colonne facteur"
+  moyennes <- tapply(rdt,fac,mean) # afficher = ok
+  output$mean <- renderTable({tapply(rdt,fac,mean)}, rownames = TRUE)
+  
+  variances <- tapply(rdt,fac,var)
+  plot <- boxplot(rdt~fac, xlab="Varietes", ylab="rendement en qx/ha") # afficher = ok
+  output$boxplot <- renderPlot({boxplot(rdt~fac, xlab="Varietes", ylab="Rendement en qx/ha")})
+  
+  #indépendance
+  lm1 <- lm(rdt~fac)
+  par(mfrow=c(2,2))
+  plotsindep <- plot(lm1) ## (Demande à l'utilisateur + Affiche) Ok si  :
 }
