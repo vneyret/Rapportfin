@@ -1528,14 +1528,17 @@ div.tocify {
 Apercu du tableau de données utilisé
 </p>
 </div>
-<p>Notre application réalisera une ANOVA qui sert à vérifier que le facteur (variété) a une influence sur le résultat (rendement). Ensuite, elle réalisera un test de Tukey pour comparer et classer les résultats dans différents groupes de valeur proche. Grace à cette application, nous pourrons connaitre les variétés donnant un meilleur rendement sur un interface ludique.</p>
+<p>Notre application réalisera une ANOVA qui sert à vérifier que le facteur (variété) a une influence sur le résultat (rendement).</p>
+<p>L’application vérifiera tout d’abord que le jeu de données répond aux hypothèses nécessaires à la réalisation de cette analyse, c’est-à-dire que les valeurs sont indépendantes, normales et homoscédastiques. Ensuite, elle réalisera un test de Tukey pour comparer les valeurs deux à deux. Enfin, l’application réalise le test de Newman Keuls pour comparer et classer l’ensemble des résultats dans différents groupes de valeur proche.</p>
+<p>Grace à cette application, nous pourrons donc connaitre les variétés donnant un meilleur rendement sur un interface ludique.</p>
+<p>Elle est utilisable pour les données sélectionnées comme exemple, mais aussi pour <em>toutes autres données</em> implémentées dans le système.</p>
 </div>
 <div id="répartition-des-rôles" class="section level1">
 <h1><span class="header-section-number">2</span> Répartition des rôles</h1>
 <p>Notre groupe est composé de Anne Pinatel, Anne-Laure Girard, Dylan Clair, Eloise Galmiche, Eugénie Romette, Margot Challand, Salomé Hamard, Thomas Barrande, Valentine Neyret.</p>
 <ul>
-<li><p>Anne-Laure et Thomas se chargent d’importer les données sous R.</p></li>
-<li><p>Margot, Salomé et Dylan réalisent le codage de l’ANOVA.</p></li>
+<li><p>Anne-Laure et Thomas se chargent d’importer les données sous R et aident à la mise en forme sous shiny.</p></li>
+<li><p>Margot, Salomé et Dylan réalisent le codage de l’analyse statistique.</p></li>
 <li><p>Anne et Eugenie ont la charge de la mise en forme dans l’interface shiny.</p></li>
 <li><p>Eloise et Valentine réalisent le rapport explicatif du projet et ses étapes. Ce rapport grâce à Word et sera suivi d’un rapport Rmarkdown plus complet.</p></li>
 </ul>

@@ -32,7 +32,7 @@ Afin d’appliquer les connaissances acquises lors du module OPEN 2020, nous all
 
 Cette application réalisera une analyse statistique d’un jeu de données. 
 
-Le jeu de données, communiqué par Dylan, correspondant à un essai agronomique dans l’Aude de 2019, et comprend des variétés de petit épeautre et leurs rendements.
+Le jeu de données, utilisé comme exemple correspond à un essai agronomique dans l’Aude de 2019, et comprend des variétés de petit épeautre et leurs rendements.Le but final de notre application est d'être utilisable quelles que soient les données à traiter.
 
 Voici ci-dessous un aperçu de ces données :
 
@@ -40,16 +40,24 @@ Voici ci-dessous un aperçu de ces données :
 knitr::include_graphics("tableau.png")
 ```
 
-Notre application réalisera une ANOVA qui sert à vérifier que le facteur (variété) a une influence sur le résultat (rendement). Ensuite, elle réalisera un test de Tukey pour comparer et classer les résultats dans différents groupes de valeur proche. Grace à cette application, nous pourrons connaitre les variétés donnant un meilleur rendement sur un interface ludique.
+Notre application réalisera une ANOVA qui sert à vérifier que le facteur (variété) a une influence sur le résultat (rendement). 
+
+L’application vérifiera tout d'abord que le jeu de données répond aux hypothèses nécessaires à la réalisation de cette analyse, c’est-à-dire que les valeurs sont indépendantes, normales et homoscédastiques.
+Ensuite, elle réalisera un test de Tukey pour comparer les valeurs deux à deux. Enfin, l’application réalise le test de Newman Keuls pour comparer et classer l’ensemble des résultats dans différents groupes de valeur proche. 
+
+Grace à cette application, nous pourrons donc connaitre les variétés donnant un meilleur rendement sur un interface ludique.
+
+
+Elle est utilisable pour les données sélectionnées comme exemple, mais aussi pour **toutes autres données** implémentées dans le système.
 
 
 # Répartition des rôles
 
 Notre groupe est composé de Anne Pinatel, Anne-Laure Girard, Dylan Clair, Eloise Galmiche, Eugénie Romette, Margot Challand, Salomé Hamard, Thomas Barrande, Valentine Neyret.
 
-* Anne-Laure et Thomas se chargent d’importer les données sous R.
+* Anne-Laure et Thomas se chargent d’importer les données sous R et aident à la mise en forme sous shiny.
 
-* Margot, Salomé et Dylan réalisent le codage de l’ANOVA.
+* Margot, Salomé et Dylan réalisent le codage de l’analyse statistique.
 
 * Anne et Eugenie ont la charge de la mise en forme dans l’interface shiny.
 
