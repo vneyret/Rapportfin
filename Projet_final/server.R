@@ -1,6 +1,6 @@
 library(shiny)
 
-server <- function(input, output, session) {
+server <- function(input, output) {
   
   output$contents <- renderTable({
     
