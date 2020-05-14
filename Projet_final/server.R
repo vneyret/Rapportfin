@@ -64,8 +64,8 @@ server <- function(input, output) {
   
   ### Table d'ANOVA
   
-  anova(lm(rdt~fac))
-  output$anov <- renderText({lm(rdt~fac)})
+  data <- anova(lm(rdt~fac))
+  output$anov <- renderTable({data})
   ## Afficher 
   
   # Si P-Value > 0,05, alors on conserve l'hypothèse H0, on n'a pas pu mettre en évidence l'effet du facteur testé.
