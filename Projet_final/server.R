@@ -73,14 +73,16 @@ server <- function(input, output) {
   
   # Si P-Value <0,05, alors on fait le teste de Tuckey, si non demander si veut le faire quand même.
   TukeyHSD(aov(rdt~fac))
-  output$tuck <- renderTable(aov(rdt~fac))
   plot(TukeyHSD(aov(rdt~fac)))
+  output$tuck <- renderPlot({plot(TukeyHSD(aov(rdt~fac), ylab = "variété"))})
+  
   
   model<-aov(rendement~variete,data = donnes)
-  out <- SNK.test(model,"variete", console=TRUE, 
-                  main="patata")
-  print(SNK.test(model,"variete", group=FALSE))
-  
+out <- SNK.test(model,"variete", console=TRUE, 
+                main="patata")
+print(SNK.test(model,"variete", group=FALSE))
+output$classe <- renderTable({out$groups})
+
   ## Sort le tableau avec les variétés et les lettres de groupe en face
   
   output$classes <- renderTable({SNK.test(model,"variete", group=FALSE)})
