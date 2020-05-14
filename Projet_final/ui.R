@@ -59,11 +59,7 @@ ui <- fluidPage(
                  tags$hr(),
                  
                  # Input pour choisir le nombre de lignes à afficher
-                 radioButtons("disp", "Affichage",
-                              choices = c(Head = "En-tête",
-                                          All = "Tableau en entier"),
-                              selected = "En-tête")
-                 
+                
                ),
                
                # Panneau pour afficher les sorties
