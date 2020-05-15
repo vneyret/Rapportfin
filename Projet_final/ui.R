@@ -108,7 +108,7 @@ ui <- tagList(
                   tabPanel("Hypothèses", "This panel is intentionally left blank",
                            plotOutput("plotsindep"),
                            textOutput("shapiro"),
-                           textOutput("bartlette")
+                           textOutput("bartlett")
                   ),
                   tabPanel("Anova", "This panel is intentionally left blank",
                            tableOutput("anov"),

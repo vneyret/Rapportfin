@@ -42,23 +42,6 @@ server <- function(input, output) {
   plot <- boxplot(rdt~fac, xlab="Varietes", ylab="rendement en qx/ha") # afficher = ok
   output$boxplot <- renderPlot({boxplot(rdt~fac, xlab="Varietes", ylab="Rendement en qx/ha")})
   
-  #indépendance
-  lm1 <- lm(rdt~fac)
-  par(mfrow=c(2,2))
-  plotsindep <- plot(lm1) ## (Demande à l'utilisateur + Affiche) Ok si  :
-  
-  #- Residual, Scale-Location et Constante Leverage : points éparpillés,
-  #- Normal Q_Q : points sur la ligne, 
-  
-  #Normalité
-  shapiro.test(lm1$residuals) ## (Affiche) Ok si P-Value > 0,05.
-  
-  #homoscédasticité
-  bartlett.test(rdt~fac) ## (Affiche) OK si P-Value > 0,05.
-  
-  
-  
-  
   ### Démontrer les 3 hypothèse 
   
   #indépendance
@@ -67,20 +50,19 @@ server <- function(input, output) {
   plotsindep <- plot(lm1) ## (Demande à l'utilisateur + Affiche) Ok si  : 
   output$plotsindep <- renderPlot({plot(lm1)}, par(mfrow=c(2,2)))
   
-  
   #- Residual, Scale-Location et Constante Leverage : points éparpillés,
   #- Normal Q_Q : points sur la ligne, 
   
   #Normalité
-  
+  shapiro.test(lm1$residuals) ## (Affiche) Ok si P-Value > 0,05.
   output$shapiro <- renderPrint({shapiro.test(lm1$residuals)}) ## (Affiche) Ok si P-Value > 0,05.
   
   #homoscédasticité
-  
-  output$bartlette <- renderPrint({bartlett.test(rdt~fac)}) ## (Affiche) OK si P-Value > 0,05.
+  bartlett.test(rdt~fac) ## (Affiche) OK si P-Value > 0,05.
+  output$bartlett <- renderPrint({bartlett.test(rdt~fac)}) ## (Affiche) OK si P-Value > 0,05
+
   
   #Si les 3 conditions d'hypothèse ne sont pas validées, on ne peut pas faire d'ANOVA, demander si il veut quand même la faire.
-  
   
   
   ### Table d'ANOVA
