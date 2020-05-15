@@ -48,7 +48,7 @@ server <- function(input, output) {
   lm1 <- lm(rdt~fac)
   par(mfrow=c(2,2))
   plotsindep <- plot(lm1) ## (Demande à l'utilisateur + Affiche) Ok si  : 
-  output$plotsindep <- renderPlot({plot(lm1)}, par(mfrow=c(2,2)))
+  output$plotsindep <- renderPlot({plot(lm1)})
   
   #- Residual, Scale-Location et Constante Leverage : points éparpillés,
   #- Normal Q_Q : points sur la ligne, 
