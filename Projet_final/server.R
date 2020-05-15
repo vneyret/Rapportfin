@@ -84,7 +84,7 @@ server <- function(input, output) {
 out <- SNK.test(model,"variete", console=TRUE, 
                 main="patata")
 print(SNK.test(model,"variete", group=FALSE))
-output$classe <- renderTable({out$groups})
+output$classe <- renderTable({out$groups}, rownames = TRUE)
 
   ## Sort le tableau avec les variétés et les lettres de groupe en face
   
