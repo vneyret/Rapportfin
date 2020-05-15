@@ -100,10 +100,7 @@ ui <- tagList(
                            br(),
                            tableOutput("mean"),
                            h5(p("Nous affichons le",strong ("boxplot"), "pour les différentes modalités du facteur. Le boxplot permet de visualiser des mesures statistiques clés telles que la médiane, la moyenne et les quartiles.", style="text-align:justify;color:black;background-color:#e0ffff;padding:15px;border-radius:8px")),
-                           plotOutput("boxplot"),
-                           
-                           plotOutput("tuck"),
-                           tableOutput("classes")
+                           plotOutput("boxplot")
                   ),
                   tabPanel("Hypothèses", "This panel is intentionally left blank",
                            plotOutput("plotsindep"),
@@ -113,7 +110,9 @@ ui <- tagList(
                   tabPanel("Anova", "This panel is intentionally left blank",
                            tableOutput("anov"),
                            ),
-                  tabPanel("Résultats", "Ci dessous :")
+                  tabPanel("Résultats", "Ci dessous :",
+                           plotOutput("tuck"),
+                           tableOutput("classes"))
                )
             ) 
             
