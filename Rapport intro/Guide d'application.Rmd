@@ -28,14 +28,14 @@ library(tibble)
 
 # Définition du projet
 
-Afin d’appliquer les connaissances acquises lors du module OPEN 2020, nous allons créer une application Shiny à l’aide de R et Rstudio.
+Afin d’appliquer les connaissances acquises lors du module OPEN 2020, nous avons créer une application Shiny à l’aide de R et Rstudio.
 
-Cette application réalisera une analyse statistique d’un jeu de données. 
+Cette application a pour but de réaliser une analyse statistique d’un jeu de données. 
 
 
 # Répartition des rôles
 
-Notre groupe est composé de Anne Pinatel, Anne-Laure Girard, Dylan Clair, Eloise Galmiche, Eugénie Romette, Margot Challand, Salomé Hamard, Thomas Barrande, Valentine Neyret.
+Notre groupe est composé de Anne Pinatel, Anne-Laure Girard, Dylan Clair, Eloise Galmiche, Eugénie Romette, Margot Challand, Salomé Hamard, Thomas Barrande et Valentine Neyret.
 
 * Anne-Laure et Thomas se chargent d’importer les données sous R.
 
@@ -48,17 +48,17 @@ Notre groupe est composé de Anne Pinatel, Anne-Laure Girard, Dylan Clair, Elois
 
 # Application
 
-Notre application réalisera une ANOVA qui sert à vérifier que le facteur (variété) a une influence sur le résultat (rendement). 
+Notre application réalise une ANOVA qui sert à vérifier que le facteur (variété) a une influence sur le résultat (rendement). 
 
-L’application vérifiera tout d'abord que le jeu de données répond aux hypothèses nécessaires à la réalisation de cette analyse, c’est-à-dire que les valeurs sont indépendantes, normales et homoscédastiques.
-Ensuite, elle réalisera un test de Tukey pour comparer les valeurs deux à deux. Enfin, l’application réalise le test de Newman Keuls pour comparer et classer l’ensemble des résultats dans différents groupes de valeur proche. 
+L’application vérifie tout d'abord que le jeu de données répond aux hypothèses nécessaires à la réalisation de cette analyse, c’est-à-dire que les valeurs sont indépendantes, normales et homoscédastiques.
+Ensuite, elle réaliseun test de Tukey pour comparer les valeurs deux à deux. Enfin, l’application réalise le test de Newman Keuls pour comparer et classer l’ensemble des résultats dans différents groupes de valeur proche. 
 
 Grace à cette application, nous pourrons donc connaitre les variétés donnant un meilleur rendement sur un interface ludique.
 
 
 Elle est utilisable pour les données sélectionnées comme exemple, mais aussi pour **toutes autres données** implémentées dans le système.
 
-Le jeu de données, utilisé comme exemple correspond à un essai agronomique dans l’Aude de 2019, et comprend des variétés de petit épeautre et leurs rendements.
+Le jeu de données utilisé comme exemple correspond à un essai agronomique dans l’Aude de 2019, et comprend des variétés de petit épeautre et leurs rendements.
 
 Voici ci-dessous un aperçu de ces données :
 
@@ -71,7 +71,7 @@ knitr::include_graphics("tableau.png")
 
 L'application est formée de trois onglets: 
 
-* Informations: L'onglet information est ce que l'on pourrait assimiler à une page de garde. Ainsi, on y trouve les hypothèses de base, l'explication des données et leur provenance. 
+* Informations: L'onglet informations est ce que l'on pourrait assimiler à une page de garde. Ainsi, on y trouve les hypothèses de base, l'explication des données et leur provenance. 
 
 * Charger tableau: Dans cet onglet, on sélectionne le tableau de données à importer, qui s'affiche une fois chargé.
 
@@ -89,8 +89,6 @@ Le dossier Rapport fin comprend :
 * Le dossier Rapport intro : comprend tous les éléments faisant constituant le rapport final. Ce rapport s’appelle « Guide d’application » et a été créé en version PDF et Rmd
 
 * Le dossier tableau : comprend les données auxquels le projet fait appel
-
-* Le fichier Anova : brouillon
 
 * Le fichier Anova_final : le code R final pour les analyses statistiques
 
