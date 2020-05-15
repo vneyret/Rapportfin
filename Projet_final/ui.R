@@ -112,7 +112,7 @@ ui <- tagList(
                            ),
                   tabPanel("Résultats", "Ci dessous :",
                            plotOutput("tuck"),
-                           tableOutput("classes"))
+                           tableOutput("classe"))
                )
             ) 
             

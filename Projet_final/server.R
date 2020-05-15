@@ -81,13 +81,13 @@ server <- function(input, output) {
   
   
   model<-aov(rendement~variete,data = donnes)
-out <- SNK.test(model,"variete", console=TRUE, 
-                main="patata")
-print(SNK.test(model,"variete", group=FALSE))
-output$classe <- renderTable({out$groups}, rownames = TRUE)
-
+  out <- SNK.test(model,"variete", console=TRUE, 
+                  main="patata")
+  print(SNK.test(model,"variete", group=FALSE))
+  output$classe <- renderTable({out$groups}, rownames = TRUE)
+  
   ## Sort le tableau avec les variétés et les lettres de groupe en face
   
-  output$classes <- renderTable({SNK.test(model,"variete", group=FALSE)})
+  
   
 }
