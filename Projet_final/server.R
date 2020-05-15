@@ -40,7 +40,7 @@ server <- function(input, output) {
   
   variances <- tapply(rdt,fac,var)
   plot <- boxplot(rdt~fac, xlab="Varietes", ylab="rendement en qx/ha") # afficher = ok
-  output$boxplot <- renderPlot({boxplot(rdt~fac, xlab="Varietes", ylab="Rendement en qx/ha")})
+  output$boxplot <- renderPlot({boxplot(rdt~fac, xlab="Variétés", ylab="Rendement en qx/ha")})
   
   ### Démontrer les 3 hypothèse 
   
